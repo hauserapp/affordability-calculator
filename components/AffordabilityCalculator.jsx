@@ -312,7 +312,7 @@ export default function BuyingPowerCalc() {
                 CARD 1 — Financials
             ══════════════════════════════════════════════ */}
             <div className="left-card" style={{ ...card, width: 390, height: 700, display: "flex", flexDirection: "column", paddingBottom: 0 }}>
-              <div style={{ ...sectHdr, marginBottom: 10 }}>Financials</div>
+              <div style={{ ...sectHdr, marginBottom: 20 }}>Financials</div>
 
               <div style={fRow}>
                 <div style={fLbl}>
@@ -341,7 +341,7 @@ export default function BuyingPowerCalc() {
                 <FmtInput value={recurring} onChange={setRecurring} />
               </div>
 
-              <div style={{ ...fRow, marginTop: 36 }}>
+              <div style={{ ...fRow, marginTop: 16 }}>
                 <div style={fLbl}>
                   <span>Down payment</span>
                   {downPct < 20 && homePrice > 0 && (
@@ -374,7 +374,7 @@ export default function BuyingPowerCalc() {
                   style={sliderBg(rate, 2, 12)} />
               </div>
 
-              <div style={{ marginTop: "auto", paddingBottom: 20 }}>
+              <div style={{ marginTop: 16, paddingBottom: 20 }}>
                 <div style={{ ...fLbl, marginBottom: 8 }}>Loan term (years)</div>
                 <div style={{ display: "flex", gap: 6 }}>
                   {[15, 20, 30].map(t => (
@@ -671,4 +671,4 @@ export default function BuyingPowerCalc() {
       )}
     </>
   );
-}
+} 
