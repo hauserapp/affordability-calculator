@@ -350,7 +350,7 @@ export default function BuyingPowerCalc() {
                     </span>
                   )}
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 72px", gap: 8, marginBottom: 10 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 72px", gap: 8, marginBottom: 0 }}>
                   <FmtInput value={downCash} onChange={setDownCash} />
                   <div style={{ display: "flex", alignItems: "center", background: C.surface, borderRadius: 8 }}>
                     <span style={{ flex: 1, textAlign: "right", padding: "11px 4px 11px 10px", fontSize: 16, color: C.muted }}>{downPct.toFixed(0)}</span>
@@ -671,4 +671,4 @@ export default function BuyingPowerCalc() {
       )}
     </>
   );
-}
+}   
