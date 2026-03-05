@@ -311,7 +311,7 @@ export default function BuyingPowerCalc() {
             {/* ══════════════════════════════════════════════
                 CARD 1 — Financials
             ══════════════════════════════════════════════ */}
-            <div className="left-card" style={{ ...card, width: 390, height: 700 }}>
+            <div className="left-card" style={{ ...card, width: 390, height: 700, display: "flex", flexDirection: "column", paddingBottom: 0 }}>
               <div style={{ ...sectHdr, marginBottom: 10 }}>Financials</div>
 
               <div style={fRow}>
@@ -362,7 +362,7 @@ export default function BuyingPowerCalc() {
                   style={sliderBg(downCash, 0, 500000)} />
               </div>
 
-              <div style={fRow}>
+              <div style={{ ...fRow, marginBottom: 0 }}>
                 <div style={fLbl}>
                   <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     Interest rate <IBtn text="Current rate from your lender. Check Freddie Mac's weekly survey for market rates." />
@@ -374,7 +374,7 @@ export default function BuyingPowerCalc() {
                   style={sliderBg(rate, 2, 12)} />
               </div>
 
-              <div style={fRow}>
+              <div style={{ marginTop: "auto", paddingBottom: 20 }}>
                 <div style={{ ...fLbl, marginBottom: 8 }}>Loan term (years)</div>
                 <div style={{ display: "flex", gap: 6 }}>
                   {[15, 20, 30].map(t => (
@@ -671,4 +671,4 @@ export default function BuyingPowerCalc() {
       )}
     </>
   );
-}   
+}
