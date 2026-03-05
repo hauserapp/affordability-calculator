@@ -3,11 +3,30 @@ import { AlertTriangle } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const FONT_URL   = "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap";
+const FONT_URL    = "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap";
 const DTI_MAX     = 0.50;
 const DTI_STRETCH = 0.36;
 const DTI_HARD    = 0.43;
 const C = { lime: "#c0ff02", amber: "#FFB94F", rose: "#DB5282", bg: "#262626", muted: "#bbb7af", dark: "#141414", surface: "#333", dim: "#898785" };
+
+// ─── Design Primitives (non-negotiable) ──────────────────────────────────────
+const CARD = {
+  bg:          C.bg,
+  radius:      25,
+  padding:     20,
+  leftWidth:   390,
+  leftHeight:  700,
+  topHeight:   315,
+  botHeight:   365,
+  gap:         20,
+};
+
+const SPACING = {
+  titleMb:     20,
+  groupGap:    16,
+  labelMb:     8,
+  sectionMt:   36,
+};
 
 // ─── Utilities ────────────────────────────────────────────────────────────────
 const fmt  = n => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
@@ -311,10 +330,10 @@ export default function BuyingPowerCalc() {
             {/* ══════════════════════════════════════════════
                 CARD 1 — Financials
             ══════════════════════════════════════════════ */}
-            <div className="left-card" style={{ ...card, width: 390, display: "flex", flexDirection: "column", paddingBottom: 0 }}>
+            <div className="left-card" style={{ background: CARD.bg, borderRadius: CARD.radius, padding: CARD.padding, paddingBottom: CARD.padding, width: CARD.leftWidth, height: CARD.leftHeight, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div style={{ ...sectHdr, marginBottom: 20 }}>Financials</div>
 
-              <div style={fRow}>
+              <div>
                 <div style={fLbl}>
                   <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     Annual household income <IBtn text="Combined gross income before taxes for all borrowers." />
@@ -323,7 +342,7 @@ export default function BuyingPowerCalc() {
                 <FmtInput value={income} onChange={setIncome} />
               </div>
 
-              <div style={fRow}>
+              <div>
                 <div style={fLbl}>
                   <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     Monthly debt payments <IBtn text="Car loans, student loans, credit card minimums. Exclude rent." />
@@ -332,7 +351,7 @@ export default function BuyingPowerCalc() {
                 <FmtInput value={debts} onChange={setDebts} />
               </div>
 
-              <div style={fRow}>
+              <div>
                 <div style={fLbl}>
                   <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     Recurring monthly expenses <IBtn text="Subscriptions, childcare, utilities — reduce real budget even if lenders don't count them." />
@@ -341,7 +360,9 @@ export default function BuyingPowerCalc() {
                 <FmtInput value={recurring} onChange={setRecurring} />
               </div>
 
-              <div style={{ ...fRow }}>
+              <div style={{ height: 20 }} />
+
+              <div style={{ marginBottom: 0 }}>
                 <div style={fLbl}>
                   <span>Down payment</span>
                   {downPct < 20 && homePrice > 0 && (
@@ -362,7 +383,7 @@ export default function BuyingPowerCalc() {
                   style={sliderBg(downCash, 0, 500000)} />
               </div>
 
-              <div style={{ ...fRow, marginBottom: 0 }}>
+              <div style={{ marginBottom: 0 }}>
                 <div style={fLbl}>
                   <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     Interest rate <IBtn text="Current rate from your lender. Check Freddie Mac's weekly survey for market rates." />
@@ -374,7 +395,7 @@ export default function BuyingPowerCalc() {
                   style={sliderBg(rate, 2, 12)} />
               </div>
 
-              <div style={{ marginTop: 16, paddingBottom: 20 }}>
+              <div style={{ marginBottom: 0 }}>
                 <div style={{ ...fLbl, marginBottom: 8 }}>Loan term (years)</div>
                 <div style={{ display: "flex", gap: 6 }}>
                   {[15, 20, 30].map(t => (
@@ -390,7 +411,7 @@ export default function BuyingPowerCalc() {
               {/* ══════════════════════════════════════════════
                   CARD 2 — Buying Power
               ══════════════════════════════════════════════ */}
-              <div className="right-card top-card" style={{ ...card, height: 315, position: "relative" }}>
+              <div className="right-card top-card" style={{ background: CARD.bg, borderRadius: CARD.radius, padding: CARD.padding, height: CARD.topHeight, position: "relative" }}>
 
                 {/* Desktop */}
                 <div className="bp-d">
@@ -496,7 +517,7 @@ export default function BuyingPowerCalc() {
               {/* ══════════════════════════════════════════════
                   CARD 3 — Monthly Breakdown
               ══════════════════════════════════════════════ */}
-              <div className="right-card bot-card" style={{ ...card, height: 365 }}>
+              <div className="right-card bot-card" style={{ background: CARD.bg, borderRadius: CARD.radius, padding: CARD.padding, height: CARD.botHeight }}>
 
                 {/* Desktop */}
                 <div className="bkd-d" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
