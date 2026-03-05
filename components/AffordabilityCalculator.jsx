@@ -311,7 +311,7 @@ export default function BuyingPowerCalc() {
             {/* ══════════════════════════════════════════════
                 CARD 1 — Financials
             ══════════════════════════════════════════════ */}
-            <div className="left-card" style={{ ...card, width: 390, height: 700, display: "flex", flexDirection: "column", paddingBottom: 0 }}>
+            <div className="left-card" style={{ ...card, width: 390, display: "flex", flexDirection: "column", paddingBottom: 0 }}>
               <div style={{ ...sectHdr, marginBottom: 20 }}>Financials</div>
 
               <div style={fRow}>
@@ -341,7 +341,7 @@ export default function BuyingPowerCalc() {
                 <FmtInput value={recurring} onChange={setRecurring} />
               </div>
 
-              <div style={{ ...fRow, marginTop: 16 }}>
+              <div style={{ ...fRow }}>
                 <div style={fLbl}>
                   <span>Down payment</span>
                   {downPct < 20 && homePrice > 0 && (
@@ -671,4 +671,4 @@ export default function BuyingPowerCalc() {
       )}
     </>
   );
-} 
+}
